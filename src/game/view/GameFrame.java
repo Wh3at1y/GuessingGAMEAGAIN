@@ -1,14 +1,17 @@
 package game.view;
 
+import game.controller.GameController;
+
 import javax.swing.JFrame;
 
 public class GameFrame extends JFrame
 	{
 		private GamePanel basePanel;
 		
-		public GameFrame()
+		public GameFrame(GameController baseController)
 		{
-			basePanel = new GamePanel();
+			basePanel = new GamePanel(baseController);
+			
 			buildFrame();
 		}
 		
@@ -21,4 +24,9 @@ public class GameFrame extends JFrame
 			this.setContentPane(basePanel);
 			this.setVisible(true);
 		}
+
+		public GamePanel getBasePanel()
+			{
+				return basePanel;
+			}
 	}

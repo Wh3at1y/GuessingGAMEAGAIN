@@ -1,5 +1,7 @@
 package game.view;
 
+import game.controller.GameController;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -9,7 +11,8 @@ import javax.swing.*;
 
 public class UserInputPanel extends JPanel
 	{
-		private DifficultyPanel grabDiff;
+		private GameController baseController;
+		
 		private SpringLayout baseLayout;
 		
 		private JTextField userGuessField;
@@ -18,13 +21,13 @@ public class UserInputPanel extends JPanel
 		private int userGuess;
 		
 		//Class that needs the random Number
-		public UserInputPanel() 
+		public UserInputPanel(GameController baseController) 
 		{
-			grabDiff = new DifficultyPanel();
+			this.baseController = baseController;
 			
 			baseLayout = new SpringLayout();
 			
-			userGuessField = new JTextField(2);
+			userGuessField = new JTextField();
 			enterInputButton = new JButton("Enter Guess");
 			
 			buildPanel();
@@ -35,7 +38,7 @@ public class UserInputPanel extends JPanel
 		private void buildPanel()
 		{
 			setBackground(Color.RED);
-			setPreferredSize(new Dimension(200,200));
+			setPreferredSize(new Dimension(250,70));
 			setLayout(baseLayout);
 			add(userGuessField);
 			add(enterInputButton);
@@ -43,7 +46,14 @@ public class UserInputPanel extends JPanel
 		
 		private void buildWindow()
 		{
-			
+			baseLayout.putConstraint(SpringLayout.NORTH, enterInputButton, 10, SpringLayout.NORTH, this);
+			baseLayout.putConstraint(SpringLayout.WEST, enterInputButton, 6, SpringLayout.EAST, userGuessField);
+			baseLayout.putConstraint(SpringLayout.SOUTH, enterInputButton, 60, SpringLayout.NORTH, this);
+			baseLayout.putConstraint(SpringLayout.EAST, enterInputButton, -10, SpringLayout.EAST, this);
+			baseLayout.putConstraint(SpringLayout.NORTH, userGuessField, 10, SpringLayout.NORTH, this);
+			baseLayout.putConstraint(SpringLayout.WEST, userGuessField, 10, SpringLayout.WEST, this);
+			baseLayout.putConstraint(SpringLayout.SOUTH, userGuessField, -10, SpringLayout.SOUTH, this);
+			baseLayout.putConstraint(SpringLayout.EAST, userGuessField, -175, SpringLayout.EAST, this);
 		}
 		
 		private void buildListeners()
@@ -53,10 +63,8 @@ public class UserInputPanel extends JPanel
 					public void actionPerformed(ActionEvent clicked)
 					{
 						parseInput();
-						System.out.println("MY INPUT " + userGuess);
-						
-						//This line prints it to 0
-						System.out.println("GEN NUM : " + grabDiff.getSelectedNumber());
+						baseController.setUserGuess(userGuess);
+						baseController.checkAnswer();
 					}
 				});
 		}

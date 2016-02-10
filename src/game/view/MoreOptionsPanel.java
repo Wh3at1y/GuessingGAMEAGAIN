@@ -9,20 +9,19 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-public class DifficultyPanel extends JPanel
+public class MoreOptionsPanel extends JPanel
 	{
 		private GameController baseController;
 		private SpringLayout baseLayout;
 		
 		private JButton easyButton;
 		
-		public DifficultyPanel(GameController baseController)
+		public MoreOptionsPanel(GameController baseController)
 		{
 			this.baseController = baseController;
 			baseLayout = new SpringLayout();
 			
 			easyButton = new JButton("Easy");
-			
 			
 			buildPanel();
 			buildWindow();
@@ -31,8 +30,8 @@ public class DifficultyPanel extends JPanel
 		
 		private void buildPanel()
 		{
-			setBackground(Color.BLUE);
-			setPreferredSize(new Dimension(200,300));
+			setBackground(Color.GRAY);
+			setPreferredSize(new Dimension(450,178));
 			
 			setLayout(baseLayout);
 			add(easyButton);
@@ -40,10 +39,6 @@ public class DifficultyPanel extends JPanel
 		
 		private void buildWindow()
 		{
-			baseLayout.putConstraint(SpringLayout.NORTH, easyButton, 10, SpringLayout.NORTH, this);
-			baseLayout.putConstraint(SpringLayout.WEST, easyButton, 10, SpringLayout.WEST, this);
-			baseLayout.putConstraint(SpringLayout.SOUTH, easyButton, 58, SpringLayout.NORTH, this);
-			baseLayout.putConstraint(SpringLayout.EAST, easyButton, -10, SpringLayout.EAST, this);
 		}
 		
 		private void buildListeners()
@@ -52,7 +47,6 @@ public class DifficultyPanel extends JPanel
 				{
 					public void actionPerformed(ActionEvent click)
 					{
-						baseController.setDifficulty(1);
 					}
 				});
 		}
