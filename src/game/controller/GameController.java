@@ -51,9 +51,7 @@ public class GameController
 						baseFrame.getBasePanel().getDisplayInfo().setText(winnerText);
 					}
 				else if(selectedDiff == 3)
-					System.out.println("Hard");
-				
-				
+					System.out.println("Hard");	
 			}
 		
 		/**
