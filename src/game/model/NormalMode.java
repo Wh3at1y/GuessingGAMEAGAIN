@@ -2,28 +2,28 @@ package game.model;
 
 import game.controller.GameController;
 
-public class EasyMode
+public class NormalMode
 	{
 		private GameController baseController;
-		private int easyNumber;
+		private int normalNumber;
 
-		public EasyMode(GameController baseController)
+		public NormalMode(GameController baseController)
 		{
 			this.baseController = baseController;
 		}
 		
-		public int generateEasyNumber()
+		public int generateNormalNumber()
 		{
-			easyNumber = 0;
-			easyNumber = (int) (Math.random() * 51);
-			System.out.println(easyNumber);
+			normalNumber = 0;
+			normalNumber = (int) (Math.random() * 201);
+			System.out.println(normalNumber);
 			
-			return easyNumber;
+			return normalNumber;
 		}
 		
 		public void checkAnswer()
 		{
-			if(baseController.getUserGuess() == easyNumber)
+			if(baseController.getUserGuess() == normalNumber)
 				{
 					baseController.setWinnerText("You did it! Winner!");	
 				}

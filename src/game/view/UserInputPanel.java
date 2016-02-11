@@ -64,7 +64,8 @@ public class UserInputPanel extends JPanel
 					{
 						parseInput();
 						baseController.setUserGuess(userGuess);
-						baseController.checkAnswer();
+						//Checks the user answer and updates the text box.
+						baseController.checkAnswerUpdateText();
 					}
 				});
 		}

@@ -1,19 +1,24 @@
 package game.controller;
 
 import game.model.EasyMode;
+import game.model.NormalMode;
 import game.view.GameFrame;
 
 public class GameController
 	{
 		private EasyMode easyMode;
+		private NormalMode normalMode;
 		private GameFrame baseFrame;
 		private int userGuess;
+		private int selectedDiff;
 		private String winnerText;
+		private String difficultyText;
 		
 		public GameController()
 		{
 			baseFrame = new GameFrame(this);
 			easyMode = new EasyMode(this);
+			normalMode = new NormalMode(this);
 		}
 		
 		public void start(){	}
@@ -24,18 +29,31 @@ public class GameController
 		 */
 		public void setDifficulty(int selectedDiff)
 		{
+			this.selectedDiff = selectedDiff;
 			if(selectedDiff == 1)
 				easyMode.generateEasyNumber();
 			else if(selectedDiff == 2)
-				System.out.println("Normal");
+				normalMode.generateNormalNumber();
 			else if(selectedDiff == 3)
 				System.out.println("Hard");
 		}
 		
-		public void checkAnswer()
+		public void checkAnswerUpdateText()
 			{
-				easyMode.checkAnswer();
-				baseFrame.getBasePanel().getDisplayInfo();
+				if(selectedDiff == 1)
+					{
+						easyMode.checkAnswer();
+						baseFrame.getBasePanel().getDisplayInfo().setText(winnerText);
+					}
+				else if(selectedDiff == 2)
+					{
+						normalMode.checkAnswer();
+						baseFrame.getBasePanel().getDisplayInfo().setText(winnerText);
+					}
+				else if(selectedDiff == 3)
+					System.out.println("Hard");
+				
+				
 			}
 		
 		/**
@@ -52,6 +70,11 @@ public class GameController
 			return winnerText;
 		}
 		
+		public String getDifficultyText()
+		{
+			return difficultyText;
+		}
+		
 		/**
 		 * Setters section
 		 * @param setUserGuess sets what they guess, into the userGuess variable.
@@ -64,5 +87,11 @@ public class GameController
 		public void setWinnerText(String winnerText)
 		{
 			this.winnerText = winnerText;
+		}
+		
+		public void setDifficultyText(String difficultyText)
+		{
+			this.difficultyText = difficultyText;
+			baseFrame.getBasePanel().getDisplayInfo().setDifficultyText(difficultyText);
 		}
 	}
