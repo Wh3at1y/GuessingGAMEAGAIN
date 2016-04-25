@@ -18,7 +18,7 @@ public class RecipePanel extends JPanel
 			this.baseController = baseController;
 			baseLayout = new SpringLayout();
 			
-			clearButton = new JButton("Clear");
+			clearButton = new JButton("Cleaopijoijr");
 			
 			
 			buildPanel();
@@ -33,6 +33,14 @@ public class RecipePanel extends JPanel
 			
 			setLayout(baseLayout);
 			add(clearButton);
+			
+			JLabel lblNewLabel = new JLabel("");
+			lblNewLabel.setIcon(new ImageIcon(RecipePanel.class.getResource("/game/view/singapore.jpg")));
+			baseLayout.putConstraint(SpringLayout.NORTH, lblNewLabel, 1, SpringLayout.SOUTH, clearButton);
+			baseLayout.putConstraint(SpringLayout.WEST, lblNewLabel, 0, SpringLayout.WEST, this);
+			baseLayout.putConstraint(SpringLayout.SOUTH, lblNewLabel, 362, SpringLayout.SOUTH, this);
+			baseLayout.putConstraint(SpringLayout.EAST, lblNewLabel, 150, SpringLayout.WEST, this);
+			add(lblNewLabel);
 		}
 		
 		private void buildWindow()

@@ -1,28 +1,29 @@
 package game.view;
 
 import game.controller.GameController;
-
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.net.MalformedURLException;
+import java.net.URL;
 import javax.swing.*;
 
 public class DifficultyPanel extends JPanel
 	{
 		private GameController baseController;
 		private SpringLayout baseLayout;
-		
 		private JButton easyButton;
 		private JButton normalButton;
 		private JButton hardButton;
 		
-		public DifficultyPanel(GameController baseController)
+		public DifficultyPanel(GameController baseController) throws MalformedURLException
 		{
 			this.baseController = baseController;
 			baseLayout = new SpringLayout();
-			
 			easyButton = new JButton("Easy");
 			normalButton = new JButton("Normal");
 			hardButton = new JButton("Hard");
@@ -35,8 +36,6 @@ public class DifficultyPanel extends JPanel
 		
 		private void buildPanel()
 		{
-			setBackground(Color.BLUE);
-			setPreferredSize(new Dimension(200,300));
 			
 			setLayout(baseLayout);
 			add(easyButton);

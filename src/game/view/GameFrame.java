@@ -1,17 +1,20 @@
 package game.view;
 
+import java.io.File;
+import java.net.MalformedURLException;
 import game.controller.GameController;
-
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 public class GameFrame extends JFrame
 	{
 		private GamePanel basePanel;
 		
-		public GameFrame(GameController baseController)
+		public GameFrame(GameController baseController) throws MalformedURLException
 		{
 			basePanel = new GamePanel(baseController);
-			
 			buildFrame();
 		}
 		

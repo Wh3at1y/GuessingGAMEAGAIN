@@ -1,7 +1,7 @@
 package game.view;
 
+import java.net.MalformedURLException;
 import game.controller.GameController;
-
 import javax.swing.*;
 
 public class GamePanel extends JPanel
@@ -14,7 +14,7 @@ public class GamePanel extends JPanel
 		
 		private SpringLayout baseLayout;
 		
-		public GamePanel(GameController baseController)
+		public GamePanel(GameController baseController) throws MalformedURLException
 		{	
 			grabDifficulty = new DifficultyPanel(baseController);
 			userPanel = new UserInputPanel(baseController);

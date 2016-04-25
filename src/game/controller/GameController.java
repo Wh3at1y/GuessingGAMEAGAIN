@@ -1,5 +1,6 @@
 package game.controller;
 
+import java.net.MalformedURLException;
 import game.model.EasyMode;
 import game.model.NormalMode;
 import game.view.GameFrame;
@@ -14,7 +15,7 @@ public class GameController
 		private String winnerText;
 		private String difficultyText;
 		
-		public GameController()
+		public GameController() throws MalformedURLException
 		{
 			baseFrame = new GameFrame(this);
 			easyMode = new EasyMode(this);
